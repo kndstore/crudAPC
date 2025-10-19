@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajouter un article</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    /* Conteneur principal du formulaire */
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titres et libellés */
+label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Champs de saisie */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Bouton de soumission */
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  form {
+    padding: 1rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🧾 Formulaire d'ajout d'article</h2>
+    <form action="/articles" method="POST">
+      <label>Référence</label>
+      <input type="text" name="reference" required>
+
+      <label>Désignation</label>
+      <input type="text" name="designation" required>
+
+      <label>N° Série</label>
+      <input type="text" name="n_serie">
+
+      <label>Quantité</label>
+      <input type="number" name="qte" min="1" value="1">
+
+      <label>Position</label>
+      <input type="text" name="position">
+
+      <label>État</label>
+      <select name="etat">
+        <option value="">-- Sélectionner --</option>
+        <option value="Neuf">Neuf</option>
+        <option value="Bon">Bon</option>
+        <option value="Usé">Usé</option>
+        <option value="Hors service">Hors service</option>
+      </select>
+
+      <label>Service</label>
+      <input type="text" name="service">
+
+      <label>Section</label>
+      <input type="text" name="section">
+
+      <label>Date</label>
+      <input type="date" name="date">
+
+      <button type="submit">Enregistrer</button>
+    </form>
+    <a href="/articles" class="btn"> afficher les   articles</a>
+  </div>
+</body>
+</html>
