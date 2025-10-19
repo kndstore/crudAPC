@@ -9,7 +9,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'src','views'));
 
 // Connexion MongoDB
 mongoose.connect('mongodb+srv://iskaryoucha:UHsOMYuZrejeHXYC@cluster0.n3rggqi.mongodb.net/crud?retryWrites=true&w=majority&appName=Cluster0');
@@ -17,7 +17,7 @@ mongoose.connect('mongodb+srv://iskaryoucha:UHsOMYuZrejeHXYC@cluster0.n3rggqi.mo
 
 app.get('/',async (req, res) => {
   try {
-    const articles = await Article.find().sort({ date: -1 }); // tri par date décroissante
+    const articles = await Article.find().sort({ designation: -1 }); // tri par date décroissante
     res.render('afficherArticle', { articles });
   } catch (err) {
     res.status(500).send('❌ Erreur lors de la récupération des articles.');
@@ -42,7 +42,7 @@ app.post('/articles', async (req, res) => {
 });
 app.get('/articles', async (req, res) => {
   try {
-    const articles = await Article.find().sort({ date: -1 }); // tri par date décroissante
+    const articles = await Article.find().sort({ designation: -1 }); // tri par designation décroissante
     res.render('afficherArticle', { articles });
   } catch (err) {
     res.status(500).send('❌ Erreur lors de la récupération des articles.');
